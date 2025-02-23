@@ -10,12 +10,15 @@ pipeline {
 
             }
             
+            post {
+                
             success{
                 echo "git repo cloned successfully "
             }
             // failure{
             //     echo "git repo failed "
             // }
+            }
         }
         
         stage('docker build Dockerfile and push to ECR repository') {
@@ -23,32 +26,25 @@ pipeline {
 
                 sh 'docker build -t 242201301329.dkr.ecr.us-east-1.amazonaws.com/node-app . '
 
+                sh ' aws ecr get-login-password | docker login --username AWS  --password-stdin 242201301329.dkr.ecr.us-east-1.amazonaws.com '
+
                 sh 'docker push 242201301329.dkr.ecr.us-east-1.amazonaws.com/node-app'
-                
+             
+                sh 'kubectl config current-context'
+   
             }
             
-            success{
-                
-                echo "docker image is built and pulled to ECR repo successfully "
+            post{
+            
+                success{
+                    
+                    echo "docker image is built and pulled to ECR repo successfully "
+                }
             }
- 
         }
         
         
-        stage('docker build Dockerfile and push to ECR repository') {
-            steps {
-
-                sh 'docker build -t 242201301329.dkr.ecr.us-east-1.amazonaws.com/node-app . '
-
-                sh 'docker push 242201301329.dkr.ecr.us-east-1.amazonaws.com/node-app'
-                
-            }
-            
-            success {
-                echo "docker image is built and pulled to ECR repo successfully "
-            }
- 
-        }
+    
         
         stage('deploy to the kubernetes cluster') {
             
@@ -61,9 +57,12 @@ pipeline {
                 sh 'kubectl apply -f ingress.yml '
 
             }
+
+            post {
             
             success {
                 echo "the application is deployed successfully "
+            }
             }
  
         }
@@ -80,4 +79,3 @@ pipeline {
         
     }
 }
-
