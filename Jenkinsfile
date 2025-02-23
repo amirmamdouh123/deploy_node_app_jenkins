@@ -61,6 +61,7 @@ pipeline {
                 echo "the application is deployed successfully "
             }
             }
+         }
 
         
         
