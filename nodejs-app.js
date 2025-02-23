@@ -4,7 +4,7 @@ const PORT =  3000;
 
 // Define the API route
 app.get('/', (req, res) => {
-    res.json({'message':'Hello Eyego'});
+    res.json({message:'Hello Eyego'});
 });
 
 // Start the server
