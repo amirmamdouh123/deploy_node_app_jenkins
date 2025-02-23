@@ -48,8 +48,8 @@ This setup automates the CI/CD process by:
 
 ```sh
 # Clone this repository
-git clone https://github.com/your-repo/devops-aws-project.git
-cd devops-aws-project
+git clone https://github.com/deploy_node_app_jenkins/
+cd deploy_node_app_jenkins
 
 # Build and run the Docker container
 docker build -t nodejs-app .
