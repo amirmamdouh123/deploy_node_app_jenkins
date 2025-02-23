@@ -32,7 +32,7 @@ spec:
               startupProbe:
                 httpGet:
                   port: 3000
-                  path: /api/hello
+                  path: /
                  
                 initialDelaySeconds: 10
                 timeoutSeconds: 3
@@ -42,7 +42,7 @@ spec:
 
                 httpGet:
                   port: 3000
-                  path: /api/hello
+                  path: /
                 initialDelaySeconds: 5
                 timeoutSeconds: 5
                 failureThreshold: 3
@@ -50,7 +50,7 @@ spec:
               livenessProbe:
                 httpGet:
                   port: 3000
-                  path: /api/hello
+                  path: /
                 initialDelaySeconds: 5    
                 timeoutSeconds: 5
                 failureThreshold: 3
