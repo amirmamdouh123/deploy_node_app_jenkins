@@ -3,7 +3,7 @@ pipeline {
 
     stages {
         
-        
+         
         stage('git clone') {
             steps {
                git 'https://github.com/amirmamdouh123/deploy_node_app_jenkins.git'
