@@ -53,8 +53,10 @@ pipeline {
                 sh 'kubectl apply -f nodejs-app-deployment.yml '
                 
 //                sh 'kubectl apply -f nodejs_clusterIP.yml '
+
+                sh 'kubectl apply -f node-app-loadbalancer.yml'
                 
-                sh 'kubectl apply -f ingress.yml '
+                // sh 'kubectl apply -f ingress.yml '
 
                 sh 'kubectl apply -f nodejs-NodePort.yml '
 
