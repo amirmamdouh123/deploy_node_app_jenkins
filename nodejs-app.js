@@ -3,7 +3,7 @@ const app = express();
 const PORT =  3000;
 
 // Define the API route
-app.get('/api/hello', (req, res) => {
+app.get('/', (req, res) => {
     res.send('Hello Eyego');
 });
 
