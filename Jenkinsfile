@@ -48,7 +48,7 @@ pipeline {
             
             steps {
 
-                sh 'kubectl delete secret/ecr-login'
+                sh 'kubectl delete secret/ecr-login 2> /dev/null'
 
                 sh 'kubectl create secret docker-registry ecr-login --docker-username=AWS  --docker-password=$( aws ecr get-login-password ) --docker-server=242201301329.dkr.ecr.us-east-1.amazonaws.com/node-app '
 
