@@ -44,7 +44,25 @@ pipeline {
         }
         
         
-    
+         stage('update the  ECR login secret in kubernetes cluster') {
+            
+            steps {
+
+                sh 'kubectl delete secret/ecr-login'
+
+                sh 'kubectl create secret docker-registry ecr-login --docker-username=AWS  --docker-password=$( aws ecr get-login-password ) --docker-server=242201301329.dkr.ecr.us-east-1.amazonaws.com/node-app '
+
+
+            }
+
+            post {
+            
+            success {
+                echo "the application is deployed successfully "
+            }
+            }
+
+        
         
         stage('deploy to the kubernetes cluster') {
             
