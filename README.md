@@ -55,14 +55,3 @@ cd deploy_node_app_jenkins
 docker build -t nodejs-app .
 docker run -p 3000:3000 nodejs-app
 ```
-
-## Future Improvements
-
-- Add monitoring using Prometheus and Grafana.
-- Implement Helm charts for easier deployment.
-- Automate infrastructure provisioning with Terraform.
-
-## Author
-
-[Your Name] - DevOps Engineer
-
